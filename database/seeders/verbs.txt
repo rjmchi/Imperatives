@@ -1,0 +1,20 @@
+Mirar, mira, no mires, mire, no mire, miren, no miren
+Correr, corre, no corras, corra, no corra, corran, no corran
+Tocar, toca, no toques, toque no toque, toquen, no toquen
+Abrir, abre, no abras, abra, no abra, abran, no abran
+Ver, ve, no veas, vea, no vea, vean, no vean
+Hablar, habla, no hables, hable, no hable, hablen, no hablen
+Caminar, camina, no camines, camine, no camine, caminen, no caminen
+Llamar, llama, no llames, llame, no llame, llamen, no llamen
+Escuchar, escucha, no escuches, escuche, no escuche, escuchen, no escuchen
+Dar, da, no des, de, no dé, den, no den
+Tomar, toma, no tomes, tome, no tome, tomen, no tomen
+Cocinar, cocina, no cocines, cocine, no cocine, cocinen, no cocinen
+Salir, sal, no salgas, salga, no salga, salgan, no salgan
+Venir, ven, no vengas, venga, no venga, vengan, no vengan
+Decir, di, no digas, diga, no diga, digan, no digan
+Hacer, haz, no hagas, haga, no haga, hagan, no hagan
+Tener, ten, no tengas, tenga, no tenga, tengan, no tengan
+Ir, ve, no vayas, vaya, no vaya, vayan, no vayan
+Poner, pon, no pongas, ponga, no ponga, pongan, no pongan
+
