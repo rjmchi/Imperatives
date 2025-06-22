@@ -20,6 +20,7 @@ const form = useForm({
     negformal: '',
     plural: '',
     negplural: '',
+    regular: false,
 });
 
 const submit = () => {
@@ -47,8 +48,8 @@ const submit = () => {
                 <Input id="verb" type="text" autofocus :tabindex="1" v-model="form.verb" placeholder="Infinitive..." />
                 <InputError :message="form.errors.verb" />
             </div>
-            <div class="flex">
-                <div class="grid gap-2">
+            <div class="flex gap-2">
+                <div class="grid gap-3">
                     <Label for="informal">Informal:</Label>
                     <Input id="informal" type="text" autofocus :tabindex="2" v-model="form.informal"
                         placeholder="Informal..." />
@@ -61,7 +62,7 @@ const submit = () => {
                     <InputError :message="form.errors.neginformal" />
                 </div>
             </div>
-            <div class="flex">
+            <div class="flex gap-3">
                 <div class="grid gap-2">
                     <Label for="formal">Formal:</Label>
                     <Input id="formal" type="text" autofocus :tabindex="4" v-model="form.formal"
@@ -75,7 +76,7 @@ const submit = () => {
                     <InputError :message="form.errors.negformal" />
                 </div>
             </div>
-            <div class="flex">
+            <div class="flex gap-3">
 
                 <div class="grid gap-2">
                     <Label for="plural">Plural:</Label>
@@ -90,6 +91,12 @@ const submit = () => {
                         placeholder="Negative Plural..." />
                     <InputError :message="form.errors.negplural" />
                 </div>
+            </div>
+            <div class="flex items-center justify-between">
+                <Label for="regular" class="flex items-center">
+                    <Checkbox id="regular" name="regular" v-model="form.regular" />
+                    <span>Regular</span>
+                </Label>
             </div>
 
             <Button type="submit" class="mt-4 " :tabindex="8" :disabled="form.processing">
