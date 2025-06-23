@@ -9,7 +9,8 @@ ENV_VAR_NAME="MAINTENANCE_MODE"
 if [[ "${!ENV_VAR_NAME}" = "true" ]]; then
   echo "Entering maintenance mode..."
   php artisan down
-fi
+
+
 #install composer dependendcies without dev dependencies
 composer install --optimize-autoloader --no-dev
 
@@ -35,4 +36,3 @@ php artisan migrate --force
 if [[ "${!ENV_VAR_NAME}" = "false" ]] || [[ -z "${!ENV_VAR_NAME}" ]]; then
   echo "Exiting maintenance mode..."
   php artisan up
-fi
