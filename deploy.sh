@@ -36,3 +36,5 @@ php artisan migrate --force
 if [[ "${!ENV_VAR_NAME}" = "false" ]] || [[ -z "${!ENV_VAR_NAME}" ]]; then
   echo "Exiting maintenance mode..."
   php artisan up
+
+fi
