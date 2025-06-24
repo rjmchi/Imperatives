@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('verbs', function (Blueprint $table) {
             $table->id();
-            $table->string('verb')->unique();
+            $table->string('verb');
             $table->string('informal');
             $table->string('neginformal');
             $table->string('formal');
