@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Verb;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class HomeController extends Controller
 {
     public function index() {
-        $verbs = Verb::orderBy('verb')->get();
+        $verbs = Verb::where('user_id', Auth::id())->orderBy('verb')->get();
 
         return Inertia::render('Welcome', ['verbs'=>$verbs]);
 

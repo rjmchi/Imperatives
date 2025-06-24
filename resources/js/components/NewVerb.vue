@@ -48,6 +48,12 @@ const submit = () => {
                 <Input id="verb" type="text" autofocus :tabindex="1" v-model="form.verb" placeholder="Infinitive..." />
                 <InputError :message="form.errors.verb" />
             </div>
+            <div class="flex items-center justify-between">
+                <Label for="regular" class="flex items-center">
+                    <Checkbox id="regular" name="regular" v-model="form.regular" />
+                    <span>Conjugate Automatically</span>
+                </Label>
+            </div>
             <div class="flex gap-2">
                 <div class="grid gap-3">
                     <Label for="informal">Informal:</Label>
@@ -92,12 +98,7 @@ const submit = () => {
                     <InputError :message="form.errors.negplural" />
                 </div>
             </div>
-            <div class="flex items-center justify-between">
-                <Label for="regular" class="flex items-center">
-                    <Checkbox id="regular" name="regular" v-model="form.regular" />
-                    <span>Regular</span>
-                </Label>
-            </div>
+
 
             <Button type="submit" class="mt-4 " :tabindex="8" :disabled="form.processing">
                 <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" />

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Verb;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VerbController extends Controller
 {
@@ -28,6 +29,7 @@ class VerbController extends Controller
      */
     public function store(Request $request)
     {
+        $id = Auth::id();
         if ($request->regular) {
             $reflexive = ['','',''];
             $flds = $request->validate(['verb'=> 'required']);
@@ -88,6 +90,7 @@ class VerbController extends Controller
             ]);
         }
 
+        $flds['user_id'] = $id;
         Verb::create($flds);
         return redirect(route('home'))->with('status', 'Verb Added');
     }

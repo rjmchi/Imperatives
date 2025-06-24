@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('negformal');
             $table->string('plural');
             $table->string('negplural');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }
