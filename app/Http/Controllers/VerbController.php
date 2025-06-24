@@ -31,8 +31,12 @@ class VerbController extends Controller
         if ($request->regular) {
             $reflexive = ['','',''];
             $flds = $request->validate(['verb'=> 'required']);
-            $request->verb = strtolower($request->verb);
-            $parts = str_split($request->verb, strlen($request->verb)-2);
+            $baseVerb = strtolower($request->verb);
+
+            //isolate the last 2 characters
+            $parts = str_split($baseVerb, strlen($baseVerb)-2);
+
+            // if the last 2 characters are se, the it is a reflexive verb
             if ($parts[1] == 'se'){
                 $reflexive = ['te', 'se', 'se'];
                 $verb = str_split($parts[0], strlen($parts[0])-2);
@@ -42,18 +46,27 @@ class VerbController extends Controller
                 $root = $parts[0];
                 $end = $parts[1];
             }
+            if (substr($root, -1) == 'c'){
+                $newroot = substr_replace($root, "qu", -1);
+            } elseif (substr($root, -1)=='g'){
+                $newroot = substr_replace($root, "gu", -1);
+            } else {
+                $newroot = $root;
+            }
+
             if ($end == 'ar'){
                 $flds = ['verb'=>$request->verb,
                 'informal' => $root.'a' . $reflexive[0],
-                'neginformal'=> 'no '.$reflexive[0] .' ' . $root.'es',
-                'formal'=> $root.'e'.$reflexive[1],
-                'negformal'=> 'no '.$reflexive[1] .' ' . $root.'e',
-                'plural'=> $root.'en'.$reflexive[2],
-                'negplural'=> 'no '.$reflexive[2] .' ' . $root.'en',
+
+                'neginformal'=> 'no '.$reflexive[0] .' ' . $newroot.'es',
+                'formal'=> $newroot.'e'.$reflexive[1],
+                'negformal'=> 'no '.$reflexive[1] .' ' . $newroot.'e',
+                'plural'=> $newroot.'en'.$reflexive[2],
+                'negplural'=> 'no '.$reflexive[2] .' ' . $newroot.'en',
             ];
             } elseif (($end == 'ir') || ($end == 'er')){
                 $flds = ['verb'=>$request->verb,
-                'informal' => $root.'e'.$reflexive[0],
+                'informal' => $newroot.'e'.$reflexive[0],
                 'neginformal'=> 'no '.$reflexive[0] .' ' . $root.'as',
                 'formal'=> $root.'a'.$reflexive[1],
                 'negformal'=> 'no '.$reflexive[1] .' ' . $root.'a',
@@ -61,6 +74,7 @@ class VerbController extends Controller
                 'negplural'=> 'no '.$reflexive[2] .' ' . $root.'an',
                 ];
             }
+
 
         } else {
             $flds = $request->validate([
