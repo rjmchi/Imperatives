@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\Verb;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,6 +15,7 @@ class VerbSeeder extends Seeder
     public function run(): void
     {
         $verbs = $this->readVerbs('database/seeders/verbs.txt');
+        $user = User::first();
 
         foreach($verbs as $verb){
             Verb::create([
@@ -24,6 +26,7 @@ class VerbSeeder extends Seeder
                 'negformal'=>$verb[4],
                 'plural'=>$verb[5],
                 'negplural'=>$verb[6],
+                'user_id'=> $user->id,
             ]);
         }
     }
